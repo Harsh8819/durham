@@ -1,15 +1,5 @@
-/*
-File_Name            :-  OOP2_LAB-2.java .
-Students Name and ID :-  Harsh Patel(100849927)
-						 Kanvi Patel(100842924).
-Date                 :-  18 NOV 2022.
-Course Name	         :-  Object Oriented Programming - 2.
-Course Code 		 :-  OOP3200.
-
-*/
-
-
 import java.time.LocalDate;
+
 public class WorkTicket {
     // Variables declaration
     private long workTicketNumber;
@@ -110,18 +100,20 @@ public class WorkTicket {
     }
 
     // ShowWorkTicket method for printing all fields information
-    public void ShowWorkTicket() {
-        System.out.println("Work Ticket Number : " + workTicketNumber);
-        System.out.println("Client ID : " + clientID);
-        System.out.println("Work Ticket Date : " + workTicketDate);
-        System.out.println("Issue Description : " + issueDescription);
+    public String ShowWorkTicket() {
+        String output = "";
+        output = output + "Work Ticket Number : " + workTicketNumber;
+        output = output + "\n" + "Client ID : " + clientID;
+        output = output + "\n" + "Work Ticket Date : " + workTicketDate;
+        output = output + "\n" + "Issue Description : " + issueDescription;
+        return output;
     }
 
     public static void main(String[] args) {
 // Creating ticket1 object with parameterized constructor
         WorkTicket ticket1 = new WorkTicket(105598, "Client 1", LocalDate.of(2020, 9, 18), "Ticket 1 Description");
 // Creating two more objects from WorkTicket class
-        WorkTicket ticket2 = new WorkTicket();
+        WorkTicket ticket2 = new WorkTicket(105598, "Client 1", LocalDate.of(2020, 9, 18), "Ticket 1 Description");
         WorkTicket ticket3 = new WorkTicket();
 
 // Declared an array of type WorkTicket and added all three objects into an array
@@ -134,7 +126,7 @@ public class WorkTicket {
 
 // Created a loop statement to print information of three objects
         for(WorkTicket ticket : tickets) {
-            ticket.ShowWorkTicket();
+            System.out.println(ticket.ShowWorkTicket());
         }
     }
 }
