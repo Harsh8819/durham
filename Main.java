@@ -1,33 +1,30 @@
 //  Name : Harsh Patel
-//  Date : 4th Dec 2022
+//  Date : 11th Dec 2022
 
+//package src;
 
-import core.Vector2;
-import objects.Polygon;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
-public class Main {
-    public static void main(String[] args)
-    {
-        Vector2 p1 = new Vector2();
+import java.io.IOException;
 
+public class Main extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("shape-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+        stage.setTitle("Shape Renderer");
+        Image icon = new Image(getClass().getResourceAsStream("icon.png"));
+        stage.getIcons().add(icon);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-
-        Polygon triangle = null;
-
-        Vector2[] verts = {new Vector2(0, 2), new Vector2(2, 2), new Vector2(2, 3)};
-
-        try
-        {
-            triangle = new Polygon(verts);
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
-
-        System.out.println(triangle);
-
-
-
+    public static void main(String[] args) {
+        launch();
     }
 }
